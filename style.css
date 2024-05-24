@@ -10,12 +10,15 @@ body{
     background-image: radial-gradient(circle farthest-side at center, hsl(214, 47%, 23%) 150%, hsl(237, 49%, 15%)10%);
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     color: white;
     font-family: "Ubuntu Sans", sans-serif;
 }
 /* section */
 section{
     padding: 2rem;
+    position: relative;
+    margin-left: 20%;
 }
 /* head-box  */
 .head-box{
@@ -52,7 +55,7 @@ section{
     width: 100%;
     position: relative;
 }
-.body-box img{
+.triangle-img{
   width: 50%;
   max-width: 75vw;
   margin-left: 30%;
@@ -84,11 +87,15 @@ section{
     height: 95%;
     background-color: white;
     margin-top: 5%;
+    align-items: center;
+    justify-content: center; 
     border-radius: 50%;
+    display: flex;
 }
-.rock{
-    background-color: blue;
-
+.back-white img{
+    width: 70%;
+    height: 70%;
+    transform: rotate(5deg);
 }
 .back{
     border-radius: 50%;
@@ -120,7 +127,6 @@ section{
     top: 18%;
     right: 18%;
 }
-
 .yellow {
     background-color: #EB9F0E;
 }
@@ -132,13 +138,100 @@ section{
 .red {
     background-color: #DB2E4D;
 }
+/* modal */
+.btn-modal{
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    width: 10vw;
+    height: 5vh;
+    margin-top: 45%;
+    transition: all ease .5s;
+}
+.btn-modal:hover{
+    background-color: white;
+    color: hsl(239, 19%, 43%);
+    cursor: pointer;
+}
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
 
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(0, 11, 59, .8);
+}
+
+.modal-header .close-btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(0, 11, 59, .8);
+}
+
+.modal-body {
+    padding: 10px 15px;
+}
+.modal-body img{
+    width: 80%;
+    margin-left: 10%;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
 /* Responsive codes */
 @media (max-width: 750px) {
     .head-box{
         width: 80vw;
     }
-    .body-box img{
+    .triangle-img{
         width: 52%;
         margin-left: 25%;
     }
@@ -149,9 +242,14 @@ section{
     .back_red{
         left: 35%;
     }
+    .btn-modal{
+        margin-top: 15%;
+        margin-left: 15%;
+        width: 20vw;
+    }
 }
 @media (max-width: 650px) {
-    .body-box img{
+    .triangle-img{
         width: 60%;
     }
     .back_red{
