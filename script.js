@@ -37,61 +37,43 @@ function closeModal(modal) {
 
 
 // Game code start
-const userScore = 0;
-const userScore_span = document.getElementById("user-score")
-const scoreBoard_div = document.querySelector(".score-board")
-const result_div = document.querySelector(".result")
-const rock_div = document.getElementById("r")
-const paper_div = document.getElementById("p")
-const scissors_div = document.getElementById("s")
+let score = 0;
+const choices = ['rock', 'paper', 'scissors'];
 
-function getComputerChoice() {
-    const choices = ['r', 'p','s']
-    const randomNumber = Math.floor(Math.random()*3)
-    return choices[randomNumber]
-}
+function playGame(userChoice) {
+    const houseChoice = choices[Math.floor(Math.random() * choices.length)];
+    document.getElementById('user-choice').textContent = userChoice;
+    document.getElementById('house-choice').textContent = houseChoice;
 
-function win() {
-    userScore++;
-}
-function lose() {
-    userScore++;
-}
-function draw() {
-    userScore++;
-}
-
-function game(userChoice) {
-    const computerChoice = getComputerChoice();
-    switch (userChoice + computerChoice) {
-        case "rs":
-        case "pr":
-        case "sp":
-            win()
-            break;
-        case "rp":
-        case "ps":
-        case "sr":
-            lose()
-            break;
-        case "rr":
-        case "pp":
-        case "ss":
-            draw()
-            break;
+    if (userChoice === houseChoice) {
+        document.getElementById('result-message').textContent = 'It\'s a draw!';
+    } else if (
+        (userChoice === 'rock' && houseChoice === 'scissors') ||
+        (userChoice === 'paper' && houseChoice === 'rock') ||
+        (userChoice === 'scissors' && houseChoice === 'paper')
+    ) {
+        document.getElementById('result-message').textContent = 'You win!';
+        score++;
+        document.getElementById('score').textContent = score;
+    } else {
+        document.getElementById('result-message').textContent = 'You lose!';
+        score = score > 0 ? score - 1 : 0;
+        document.getElementById('score').textContent = score;
     }
+
+    // Hide choices and show result
+    document.getElementById('choices').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('play-again').classList.remove('hidden');
 }
 
-function main() {
-    rock_div.addEventListener('click', function() {
-        game("r")
-    })
+function resetGame() {
+    document.getElementById('user-choice').textContent = '';
+    document.getElementById('house-choice').textContent = '';
+    document.getElementById('result-message').textContent = '';
 
-    paper_div.addEventListener('click', function () {
-        game("p")
-    })
-
-    scissors_div.addEventListener('click', function () {
-        game("s")
-    })
+    // Show choices and hide result
+    document.getElementById('choices').classList.remove('hidden');
+    document.getElementById('result').classList.add('hidden');
+    document.getElementById('play-again').classList.add('hidden');
 }

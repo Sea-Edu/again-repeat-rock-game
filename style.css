@@ -69,38 +69,57 @@ section {
     font-weight: 800;
 }
 /* result */
-.result p{
-    font-size: 72px;
-    font-weight: 900;
+.result{
+    display: flex;
+    justify-content: space-around;
 }
-.result button{
+.result p{
+    margin-inline: 10%;
+    margin-top: 5%;
+    font-size: 20px;
+    font-weight: 900;
+    color: rgb(232, 125, 125);
+}
+.result p span{
+    color: white;
+}
+.play-btn{
     width: 35%;
     height: 10vh;
     border-radius: 10px;
     font-size: 20px;
     font-weight: 800;
     transition: all linear .2s;
+    margin-left: 32%;
+    margin-top: 5%;
 }
-.result button:hover{
+.play-btn:hover{
     color: red;
     cursor: pointer;
 }
+#result-message {
+    font-size: 32px;
+   text-align: center;
+   margin-top: 5%;
+}
 /* body-box */
+.hidden{
+    display: none;
+}
 .body-box {
     width: 100%;
     position: relative;
 }
 
 .triangle-img {
-    width: 40%;
+    width: 36%;
     max-width: 75vw;
-    margin-left: 32.5%;
-    margin-top: 5%;
+    margin-left: 35%;
     transform: rotate(60deg);
 }
 
 .body-box .group {
-    width: 18%;
+    width: 12%;
     height: 35%;
     border-radius: 50%;
     display: flex;
@@ -160,8 +179,8 @@ section {
 
 .back_blue {
     background-color: #2A45C2;
-    top: 18%;
-    left: 16%;
+    top: 10%;
+    left: 25%;
 }
 
 .blue {
@@ -170,8 +189,8 @@ section {
 
 .back_yellow {
     background-color: #C76C1B;
-    top: 18%;
-    right: 20%;
+    top: 10%;
+    right: 28%;
 }
 
 .yellow {
@@ -181,7 +200,7 @@ section {
 .back_red {
     background-color: #9D1634;
     top: 90%;
-    left: 40%;
+    left: 42%;
 }
 
 .red {
@@ -191,14 +210,14 @@ section {
 /* modal */
 .btn-modal {
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 1px;
     background-color: transparent;
     color: white;
     text-transform: uppercase;
     padding: 10px 40px;
     transition: all ease .5s;
     position: absolute;
-    bottom: 100px;
+    bottom: 50px;
     right: 30px;
 }
 
@@ -207,6 +226,7 @@ section {
     color: hsl(239, 19%, 43%);
     cursor: pointer;
 }
+
 
 
 .modal {
@@ -296,6 +316,18 @@ section {
     .score-card h1 {
         font-size: 1.5rem;
     }
+    #result-message{
+       font-size: 25px; 
+    }
+    .result p {
+        font-size: 18px;
+        font-weight: 300;
+    }
+    .play-btn {
+        font-size: 18px;
+        font-weight: 300;
+        height: 7vh;
+    }
 }
 @media (max-width: 450px) {
     .text-card p {
@@ -313,50 +345,15 @@ section {
     .score-card h1 {
         font-size: .8rem;
     }
-}
-
-/* @media (max-width: 750px) {
-    .head-box {
-        width: 80vw;
-        /* margin-left: -10%; */
-/* } */
-/* 
-    .triangle-img {
-        width: 55%;
-        margin-left: 25%;
+    .result p{
+        font-size: 14px;
+        font-weight: 200;
     }
-    .back_yellow {
-        top: 18%;
-        right: 20%;
+    #result-message {
+        font-size: 18px;
     }
-    .back_red {
-        left: 35%;
-    }
-
-   
-} */
-/* 
-@media (max-width: 650px) {
-    .triangle-img {
-        width: 60%;
-    }
-
-    .back_blue {
-        left: 10%;
-    }
-
-    .back_red {
-        left: 38%;
-    }
-
-    .score-card {
-        padding: .5rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-.btn-modal {
-    right: 40%;
-
-}
-   
-} */
+    .play-btn{
+        font-size: 14px;
+        font-weight: 200;
+        height: 5vh;
+    }}

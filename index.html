@@ -17,25 +17,28 @@
             </div>
             <div class="score-card">
                 <p>score</p>
-                <h1 id="user-score">12</h1>
+                <h1 id="score">0</h1>
             </div>
         </div>
-        <div class="score-board">
-            <p>YOU PICKED</p>
-            <p>THE HAND PICKED</p>
+        <div class="result" id="result">
+            <p>You picked: <span id="user-choice"></span></p>
+            <p>The house picked: <span id="house-choice"></span></p>
         </div>
-        <div class="result">
-            <p>You win!</p>
-            <button type="button" class="play-btn">PLAY AGAIN</button>
-        </div>        <div class="blue center">
-                        <div class="back-silver">
-                            <div class="back-white">
-                                <img src="/public/images/five.png" alt="">
-                            </div>
+         <p id="result-message"></p>
+        <button onclick="resetGame()" id="play-again" class="play-btn hidden">Play Again</button>
+
+        <div class="body-box choices" id="choices">
+            <img class="triangle-img" src="/public/images/triangle-4091.svg"  alt="">
+            <div class="group back back_blue choice" id="paper" onclick="playGame('paper')">  
+                <div class="blue center">
+                    <div class="back-silver">
+                        <div class="back-white">
+                            <img src="/public/images/five.png" alt="">
                         </div>
                     </div>
+                </div>
             </div>
-            <div class="group back back_yellow" id="p">
+            <div class="group back back_yellow choice"  id="scissors" onclick="playGame('scissors')">
                 <div class="yellow center">
                     <div class="back-silver">
                         <div class="back-white">
@@ -44,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="group back back_red" id="s">
+            <div class="group back back_red choice" id="rock" onclick="playGame('rock')">
                 <div class="red center">
                     <div class="back-silver">
                         <div class="back-white">
@@ -54,9 +57,10 @@
                 </div>
             </div>
         </div>
+        
     </section>
      <!-- modal section -->
-        <button data-modal-target="#modal" class="btn-modal">rules</button>
+        <button data-m  odal-target="#modal" class="btn-modal">rules</button>
         <div class="modal" id="modal">
             <div class="modal-header">
                 <div class="title">Rules</div>
@@ -72,7 +76,4 @@
     <script src="script.js"></script>
 </body>
 </html>
-        <div class="body-box">
-            <img class="triangle-img" src="/public/images/triangle-4091.svg"  alt="">
-            <div class="group back back_blue" id="r">
-            
+      
