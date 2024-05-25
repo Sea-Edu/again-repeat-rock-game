@@ -17,7 +17,12 @@ body {
     font-family: "Ubuntu Sans", sans-serif;
     height: 100vh;
 }
-
+#comp-choice-image, 
+#user-choice-image{
+    margin-top: 15%;
+   /* margin-inline: 5%; */
+    width: 50%;
+}
 /* section */
 section {
     padding: 24px;
@@ -31,6 +36,7 @@ section {
     padding: 15px;
     display: flex;
     justify-content: space-between;
+    /* margin-left: 10%; */
 }
 
 .text-card p {
@@ -102,6 +108,7 @@ section {
    text-align: center;
    margin-top: 5%;
 }
+
 /* body-box */
 .hidden{
     display: none;
@@ -302,6 +309,7 @@ section {
 @media (max-width: 768px) {
     .head-box{
         width: 70vw;
+        margin-left: 5%;
     }
     .text-card p {
         font-size: 1em;
@@ -317,17 +325,22 @@ section {
         font-size: 1.5rem;
     }
     #result-message{
-       font-size: 25px; 
+       font-size: 22px; 
     }
     .result p {
-        font-size: 18px;
-        font-weight: 300;
+        font-size: 15px;
+        font-weight: 200;
     }
     .play-btn {
         font-size: 18px;
         font-weight: 300;
         height: 7vh;
     }
+    /* #comp-choice-image,
+    #user-choice-image {
+        width: 90px;
+        height: 93px;
+    } */
 }
 @media (max-width: 450px) {
     .text-card p {
@@ -353,7 +366,7 @@ section {
         font-size: 18px;
     }
     .play-btn{
-        font-size: 14px;
-        font-weight: 200;
+        font-size: 10px;
+        font-weight: 100;
         height: 5vh;
     }}

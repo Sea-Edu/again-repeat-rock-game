@@ -38,13 +38,29 @@ function closeModal(modal) {
 
 // Game code start
 let score = 0;
-const choices = ['rock', 'paper', 'scissors'];
+const rock =document.getElementById('rock');
+const paper=document.getElementById('paper');
+const scissors=document.getElementById('scissors')
+const choices = ['rock', 'paper','scissors'];
 
 function playGame(userChoice) {
     const houseChoice = choices[Math.floor(Math.random() * choices.length)];
     document.getElementById('user-choice').textContent = userChoice;
+    if (userChoice === 'rock') {
+        document.getElementById('user-choice-image').src = '/public/images/rock.svg' 
+    } else if (userChoice === 'paper') {
+        document.getElementById('user-choice-image').src = '/public/images/paper.svg'
+    } else if (userChoice === 'scissors') {
+        document.getElementById('user-choice-image').src = '/public/images/scissors.svg'
+    }
     document.getElementById('house-choice').textContent = houseChoice;
-
+    if (houseChoice === 'rock') {
+        document.getElementById('comp-choice-image').src = '/public/images/rock.svg'
+    } else if (houseChoice === 'paper') {
+        document.getElementById('comp-choice-image').src = '/public/images/paper.svg'
+    } else if (houseChoiceChoice === 'scissors') {
+        document.getElementById('comp-choice-image').src = '/public/images/scissors.svg'
+    }
     if (userChoice === houseChoice) {
         document.getElementById('result-message').textContent = 'It\'s a draw!';
     } else if (
@@ -60,6 +76,7 @@ function playGame(userChoice) {
         score = score > 0 ? score - 1 : 0;
         document.getElementById('score').textContent = score;
     }
+
 
     // Hide choices and show result
     document.getElementById('choices').classList.add('hidden');
