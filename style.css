@@ -17,19 +17,21 @@ body {
     font-family: "Ubuntu Sans", sans-serif;
     height: 100vh;
 }
-#comp-choice-image, 
-#user-choice-image{
+#comp-choice-image,
+#user-choice-image {
     margin-top: 15%;
-   /* margin-inline: 5%; */
-    width: 50%;
+    margin-inline: 15%;
+    width: 150px;
+    height: 160px;
 }
+
 /* section */
 section {
     padding: 24px;
 }
 
 /* head-box  */
-.head-box {
+.header {
     width: 60vw;
     border: 1px solid white;
     border-radius: 10px;
@@ -39,12 +41,12 @@ section {
     /* margin-left: 10%; */
 }
 
-.text-card p {
+.header__text p {
     font-size: 1.7em;
     font-weight: 200;
 }
 
-.score-card {
+.header__score-card {
     border-radius: 5px;
     background-color: white;
     text-align: center;
@@ -53,43 +55,54 @@ section {
     height: 80%;
 }
 
-.score-card p {
+.header__score-card p {
     text-transform: uppercase;
     color: blue;
     font-weight: 200;
 }
 
-.score-card h1 {
+#score{
     font-size: 3em;
     color: hsl(239, 19%, 43%);
+    font-weight: 900;
 }
-.score-board{
+
+.header__score-board {
     width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
     margin-top: 3%;
 }
-.score-board p{
+
+.header__score-board p {
     font-size: 25px;
     font-weight: 800;
 }
+
 /* result */
-.result{
+.result {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    /* padding: 1.2rem; */
 }
-.result p{
+
+.result p {
     margin-inline: 10%;
     margin-top: 5%;
     font-size: 20px;
     font-weight: 900;
     color: rgb(232, 125, 125);
 }
-.result p span{
+
+.result p span {
     color: white;
 }
-.play-btn{
+.result-card {
+    width: auto;
+}
+.play-btn {
     width: 35%;
     height: 10vh;
     border-radius: 10px;
@@ -99,33 +112,37 @@ section {
     margin-left: 32%;
     margin-top: 5%;
 }
-.play-btn:hover{
+
+
+.play-btn:hover {
     color: red;
     cursor: pointer;
 }
+
 #result-message {
     font-size: 32px;
-   text-align: center;
-   margin-top: 5%;
+    text-align: center;
+    margin-top: 5%;
 }
 
-/* body-box */
-.hidden{
+/* hero */
+.hidden {
     display: none;
 }
-.body-box {
+
+.hero {
     width: 100%;
     position: relative;
 }
 
-.triangle-img {
+.hero__back-img {
     width: 36%;
     max-width: 75vw;
     margin-left: 35%;
     transform: rotate(60deg);
 }
 
-.body-box .group {
+.hero .group {
     width: 12%;
     height: 35%;
     border-radius: 50%;
@@ -187,7 +204,7 @@ section {
 .back_blue {
     background-color: #2A45C2;
     top: 10%;
-    left: 25%;
+    left: 26%;
 }
 
 .blue {
@@ -307,66 +324,123 @@ section {
 
 /* Responsive codes */
 @media (max-width: 768px) {
-    .head-box{
+    .header {
         width: 70vw;
-        margin-left: 5%;
+        /* margin-left: 5%; */
     }
-    .text-card p {
+
+    .header_text-card p {
         font-size: 1em;
         font-weight: 100;
     }
 
-    .score-card p {
+    .header_score-card p {
         font-weight: 100;
         font-size: 12px;
     }
 
-    .score-card h1 {
+    .header_score-card h1 {
         font-size: 1.5rem;
     }
-    #result-message{
-       font-size: 22px; 
+
+    #result-message {
+        font-size: 22px;
     }
+
     .result p {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 200;
     }
+
     .play-btn {
         font-size: 18px;
         font-weight: 300;
         height: 7vh;
     }
-    /* #comp-choice-image,
+
+    #comp-choice-image,
     #user-choice-image {
-        width: 90px;
-        height: 93px;
-    } */
+        margin-top: 15%;
+        /* margin-inline: 15%; */
+        width: 120px;
+        height: 130px;
+    }
 }
+
 @media (max-width: 450px) {
-    .text-card p {
+    #comp-choice-image,
+    #user-choice-image {
+        margin-top: 15%;
+        /* margin-inline: 15%; */
+        width: 80px;
+        height: 90px;
+    }
+    .header_text-card p {
         font-size: .5em;
         font-weight: 100;
     }
-    .score-card{
+
+    .header_score-card {
         padding: 5px;
     }
-    .score-card p {
+
+    .header_score-card p {
         font-weight: 100;
         font-size: 8px;
     }
 
-    .score-card h1 {
+    .header_score-card h1 {
         font-size: .8rem;
     }
-    .result p{
-        font-size: 14px;
-        font-weight: 200;
+    .result{
+        padding: 1rem;
     }
+
+    .result p {
+        font-size: 11px;
+        font-weight: 100;
+    }
+
     #result-message {
         font-size: 18px;
     }
-    .play-btn{
+
+    .play-btn {
         font-size: 10px;
         font-weight: 100;
         height: 5vh;
-    }}
+    }
+    
+}
+
+/* Game History */
+.history {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: hsla(237, 49%, 15%, 0.5);
+}
+
+.history h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.history-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.history-item p {
+    margin: 0;
+}

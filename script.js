@@ -1,96 +1,102 @@
-const openModalButtons = document.querySelectorAll('[data-modal-target]')
-const closeModalButtons = document.querySelectorAll('[data-close-button]')
-const overlay = document.getElementById('overlay')
+const openModalButtons = document.querySelectorAll("[data-modal-target]");
+const closeModalButtons = document.querySelectorAll("[data-close-button]");
+const overlay = document.getElementById("overlay");
+let result_message = document.getElementById("result-message");
+let score_user = document.getElementById("score");
+let choices_group = document.getElementById("choices");
+let result = document.getElementById("result");
+let play_again = document.getElementById("play-again");
 
-openModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = document.querySelector(button.dataset.modalTarget)
-        openModal(modal)
-    })
-})
+openModalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = document.querySelector(button.dataset.modalTarget);
+    openModal(modal);
+  });
+});
 
-overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modal.active')
-    modals.forEach(modal => {
-        closeModal(modal)
-    })
-})
+overlay.addEventListener("click", () => {
+  const modals = document.querySelectorAll(".modal.active");
+  modals.forEach((modal) => {
+    closeModal(modal);
+  });
+});
 
-closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = button.closest('.modal')
-        closeModal(modal)
-    })
-})
+closeModalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.closest(".modal");
+    closeModal(modal);
+  });
+});
 
 function openModal(modal) {
-    if (modal == null) return
-    modal.classList.add('active')
-    overlay.classList.add('active')
+  if (modal == null) return;
+  modal.classList.add("active");
+  overlay.classList.add("active");
 }
 
 function closeModal(modal) {
-    if (modal == null) return
-    modal.classList.remove('active')
-    overlay.classList.remove('active')
+  if (modal == null) return;
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
 }
-
 
 // Game code start
 let score = 0;
-const rock =document.getElementById('rock');
-const paper=document.getElementById('paper');
-const scissors=document.getElementById('scissors')
-const choices = ['rock', 'paper','scissors'];
+let gameInProgress = false; // Add a flag to track if the game is in progress
+const choices = ["rock", "paper", "scissors"];
+
+document
+  .getElementById("rock")
+  .addEventListener("click", () => playGame("rock"));
+document
+  .getElementById("paper")
+  .addEventListener("click", () => playGame("paper"));
+document
+  .getElementById("scissors")
+  .addEventListener("click", () => playGame("scissors"));
 
 function playGame(userChoice) {
-    const houseChoice = choices[Math.floor(Math.random() * choices.length)];
-    document.getElementById('user-choice').textContent = userChoice;
-    if (userChoice === 'rock') {
-        document.getElementById('user-choice-image').src = '/public/images/rock.svg' 
-    } else if (userChoice === 'paper') {
-        document.getElementById('user-choice-image').src = '/public/images/paper.svg'
-    } else if (userChoice === 'scissors') {
-        document.getElementById('user-choice-image').src = '/public/images/scissors.svg'
-    }
-    document.getElementById('house-choice').textContent = houseChoice;
-    if (houseChoice === 'rock') {
-        document.getElementById('comp-choice-image').src = '/public/images/rock.svg'
-    } else if (houseChoice === 'paper') {
-        document.getElementById('comp-choice-image').src = '/public/images/paper.svg'
-    } else if (houseChoiceChoice === 'scissors') {
-        document.getElementById('comp-choice-image').src = '/public/images/scissors.svg'
-    }
-    if (userChoice === houseChoice) {
-        document.getElementById('result-message').textContent = 'It\'s a draw!';
-    } else if (
-        (userChoice === 'rock' && houseChoice === 'scissors') ||
-        (userChoice === 'paper' && houseChoice === 'rock') ||
-        (userChoice === 'scissors' && houseChoice === 'paper')
-    ) {
-        document.getElementById('result-message').textContent = 'You win!';
-        score++;
-        document.getElementById('score').textContent = score;
-    } else {
-        document.getElementById('result-message').textContent = 'You lose!';
-        score = score > 0 ? score - 1 : 0;
-        document.getElementById('score').textContent = score;
-    }
+  if (gameInProgress) return; // If the game is already in progress, do nothing
+  gameInProgress = true; // Set game in progress
 
+  const houseChoice = choices[Math.floor(Math.random() * choices.length)];
+  document.getElementById("user-choice").textContent = userChoice;
+  document.getElementById(
+    "user-choice-image"
+  ).src = `/public/images/${userChoice}.svg`;
+  document.getElementById("house-choice").textContent = houseChoice;
+  document.getElementById(
+    "comp-choice-image"
+  ).src = `/public/images/${houseChoice}.svg`;
 
-    // Hide choices and show result
-    document.getElementById('choices').classList.add('hidden');
-    document.getElementById('result').classList.remove('hidden');
-    document.getElementById('play-again').classList.remove('hidden');
+  let resultMessage;
+  if (
+    (userChoice === "rock" && houseChoice === "scissors") ||
+    (userChoice === "paper" && houseChoice === "rock") ||
+    (userChoice === "scissors" && houseChoice === "paper")
+  ) {
+    resultMessage = "You win!";
+    score++;
+  } else if (userChoice === houseChoice) {
+    resultMessage = "It's a draw!";
+  } else {
+    resultMessage = "You lose!";
+  }
+
+  result_message.textContent = resultMessage;
+  score_user.textContent = score;
+  choices_group.classList.add("hidden");
+  result.classList.remove("hidden");
+  play_again.classList.remove("hidden");
 }
 
 function resetGame() {
-    document.getElementById('user-choice').textContent = '';
-    document.getElementById('house-choice').textContent = '';
-    document.getElementById('result-message').textContent = '';
+  gameInProgress = false; // Reset game flag
+  document.getElementById("user-choice").textContent = "";
+  document.getElementById("house-choice").textContent = "";
+  document.getElementById("result-message").textContent = "";
 
-    // Show choices and hide result
-    document.getElementById('choices').classList.remove('hidden');
-    document.getElementById('result').classList.add('hidden');
-    document.getElementById('play-again').classList.add('hidden');
+  document.getElementById("choices").classList.remove("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("play-again").classList.add("hidden");
 }
